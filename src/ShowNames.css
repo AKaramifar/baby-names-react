@@ -1,0 +1,57 @@
+.Div_ShowNames_CSS{
+    width: 100%;
+    border-radius: 8px;
+    background-color: white;
+    padding: 5px 0px 5px 0px;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.Div_Male_CSS{
+    width: 100px;
+    height: 100px;
+    background-color: #4328ff;
+    border-radius: 3px;
+    margin: 2px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.Div_Male_CSS:hover{
+    background-color: #5239ff;
+    cursor: pointer;
+}
+.fa-male,
+.fa-female{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    margin: 0px;
+    padding-top: 15px;
+    font-size: 40px;
+}
+.Div_Female_CSS{
+    width: 100px;
+    height: 100px;
+    background-color: #ff2ed7;
+    border-radius: 3px;
+    margin: 2px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.Div_Female_CSS:hover{
+    background-color: #ff3fda;
+    cursor: pointer;
+}
+.P_Name_CSS{    
+    width: 100px;
+    height: 50px;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
