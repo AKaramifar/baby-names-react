@@ -17,9 +17,10 @@
     margin: 2px;
     display: flex;
     flex-wrap: wrap;
+    transition: 200ms;
 }
 .Div_Male_CSS:hover{
-    background-color: #5239ff;
+    background-color: #705bff;
     cursor: pointer;
 }
 .fa-male,
@@ -41,9 +42,10 @@
     margin: 2px;
     display: flex;
     flex-wrap: wrap;
+    transition: 200ms;
 }
 .Div_Female_CSS:hover{
-    background-color: #ff3fda;
+    background-color: #ff61e0;
     cursor: pointer;
 }
 .P_Name_CSS{    
