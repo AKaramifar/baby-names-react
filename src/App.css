@@ -2,10 +2,10 @@
   text-align: center;
   width: 80%;
   height: 100%;
-  margin: 50px auto;
+  margin: 30px auto;
   border-radius: 10px;
   padding: 5px;
-  background:linear-gradient(20deg, #ea3070, #1f94f3);;;
+  background:linear-gradient(60deg, #ea3070, #1f94f3);;;
 }
 
 .App-logo {
