@@ -7,12 +7,15 @@ const ShowNames = (props) => {
     setFilter(props.BabyNames.filter(baby => baby.name.toLowerCase().includes(e.target.value.toLowerCase())))
   }
   const MaleAndFemaleFilter = () => {
+    document.getElementById("Input_Name_JSX").value = "";
     setFilter(props.BabyNames.sort((a, b) => a.name.localeCompare(b.name)));
   };
   const MaleFilter = () => {
+    document.getElementById("Input_Name_JSX").value = "";
     setFilter(props.BabyNames.filter(baby => baby.sex === "m"));
   };
   const FemaleFilter = () => {
+    document.getElementById("Input_Name_JSX").value = "";
     setFilter(props.BabyNames.filter(baby => baby.sex === "f"));
   };
 
