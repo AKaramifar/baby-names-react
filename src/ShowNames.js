@@ -2,21 +2,35 @@ import React, { useState } from "react";
 import "./ShowNames.css";
 
 const ShowNames = (props) => {
-  const [container, setFilter] = useState(props.BabyNames.sort((a, b) => a.name.localeCompare(b.name)));
+  const [state, setstate] = useState("all")
+  const [babyNames, setFilter] = useState(props.BabyNames.sort((a, b) => a.name.localeCompare(b.name)));
   const SearchBabyName = (e) => {
-    setFilter(props.BabyNames.filter(baby => baby.name.toLowerCase().includes(e.target.value.toLowerCase())))
+    state === "all" ? setFilter(props.BabyNames.filter(baby => baby.name.toLowerCase().includes(e.target.value.toLowerCase()))) :
+      setFilter(props.BabyNames.filter(baby => baby.name.toLowerCase().includes(e.target.value.toLowerCase()) && baby.sex === state ));
   }
   const MaleAndFemaleFilter = () => {
-    document.getElementById("Input_Name_JSX").value = "";
+    setstate("all");
     setFilter(props.BabyNames.sort((a, b) => a.name.localeCompare(b.name)));
+    document.getElementById("Input_Name_JSX").value = "";
+    document.getElementById("I_MaleFilter_JSX").style.animation = "none";
+    document.getElementById("I_FemaleFilter_JSX").style.animation = "none";
+    document.getElementById("Div_M_F_JSX").style.animation = "Sex_Selected infinite 500ms";
   };
   const MaleFilter = () => {
-    document.getElementById("Input_Name_JSX").value = "";
+    setstate("m");
     setFilter(props.BabyNames.filter(baby => baby.sex === "m"));
+    document.getElementById("Input_Name_JSX").value = "";
+    document.getElementById("Div_M_F_JSX").style.animation = "none";
+    document.getElementById("I_FemaleFilter_JSX").style.animation = "none";
+    document.getElementById("I_MaleFilter_JSX").style.animation = "Sex_Selected infinite 500ms";
   };
   const FemaleFilter = () => {
-    document.getElementById("Input_Name_JSX").value = "";
+    setstate("f");
     setFilter(props.BabyNames.filter(baby => baby.sex === "f"));
+    document.getElementById("Input_Name_JSX").value = "";
+    document.getElementById("Div_M_F_JSX").style.animation = "none";
+    document.getElementById("I_MaleFilter_JSX").style.animation = "none";
+    document.getElementById("I_FemaleFilter_JSX").style.animation = "Sex_Selected infinite 500ms";
   };
 
   return (
@@ -40,16 +54,18 @@ const ShowNames = (props) => {
           ></i>
         </div>
         <i
+          id="I_MaleFilter_JSX"
           className="I_MaleFilter_CSS fas fa-male"
           onClick={MaleFilter}
         ></i>
         <i
+          id="I_FemaleFilter_JSX"
           className="I_FemailFilter_CSS fas fa-female"
           onClick={FemaleFilter}
         ></i>
       </div>
       <div id="ShowNames.JSX" className="Div_ShowNames_CSS">
-        {container.map(
+        {babyNames.map(
           (baby, index) => {
             return (
               <div
