@@ -6,7 +6,7 @@ import ShowNames from './ShowNames.js';
 function App() {
   return (
     <div className="App">
-      <ShowNames Names={BabyNamesData}/>      
+      <ShowNames BabyNames={BabyNamesData}/>      
     </div>
   );
 }

@@ -2,12 +2,18 @@ import React, { useState } from "react";
 import "./ShowNames.css";
 
 const ShowNames = (props) => {
-  const [container, setFilter] = useState(props.Names);
+  const [container, setFilter] = useState(props.BabyNames.sort((a, b) => a.name.localeCompare(b.name)));
+  const SearchBabyName = (e) => {
+    setFilter(props.BabyNames.filter(baby => baby.name.toLowerCase().includes(e.target.value.toLowerCase())))
+  }
+  const MaleAndFemaleFilter = () => {
+    setFilter(props.BabyNames.sort((a, b) => a.name.localeCompare(b.name)));
+  };
   const MaleFilter = () => {
-    setFilter(props.Names.filter((name) => name.sex === "f"));
+    setFilter(props.BabyNames.filter(baby => baby.sex === "m"));
   };
   const FemaleFilter = () => {
-    setFilter(props.Names.filter((name) => name.sex === "f"));
+    setFilter(props.BabyNames.filter(baby => baby.sex === "f"));
   };
 
   return (
@@ -19,36 +25,35 @@ const ShowNames = (props) => {
             id="Input_Name_JSX"
             className="Input_Name_CSS"
             placeholder="Search Names"
+            onChange={(e)=> SearchBabyName(e)}
           />
         </div>
-        <div id="Div_M_F_JSX" className="Div_M_F_CSS">
+        <div id="Div_M_F_JSX" className="Div_M_F_CSS" onClick={MaleAndFemaleFilter}>
           <i
             className="I_C_M_Filter_CSS fas fa-male"
-            onClick={() => MaleFilter()}
           ></i>
           <i
             className="I_C_F_Filter_CSS fas fa-female"
-            onClick={() => MaleFilter()}
           ></i>
         </div>
         <i
           className="I_MaleFilter_CSS fas fa-male"
-          onClick={() => MaleFilter()}
+          onClick={MaleFilter}
         ></i>
         <i
           className="I_FemailFilter_CSS fas fa-female"
-          onClick={() => FemaleFilter()}
+          onClick={FemaleFilter}
         ></i>
       </div>
       <div id="ShowNames.JSX" className="Div_ShowNames_CSS">
-        {props.Names.sort((a, b) => a.name.localeCompare(b.name)).map(
+        {container.map(
           (baby, index) => {
             return (
               <div
                 key={index}
                 className={baby.sex === "m" ? (baby.name === "Afshin") ? "Div_Me_CSS" : "Div_Male_CSS" : "Div_Female_CSS"}
               >
-                {baby.sex === "m" ? ( baby.name === "Afshin" ? (<i className="I_CSS fas fa-user-secret"></i>) : (<i class="I_CSS fas fa-male"></i>)
+                {baby.sex === "m" ? ( baby.name === "Afshin" ? (<i className="I_CSS fas fa-user-secret"></i>) : (<i className="I_CSS fas fa-male"></i>)
                 ) : (
                   <i className="I_CSS fas fa-female"></i>
                 )}
@@ -57,7 +62,7 @@ const ShowNames = (props) => {
             );
           }
         )}
-        {console.log(props.Names)}
+        {console.log(props.BabyNames)}
       </div>
     </div>
   );
